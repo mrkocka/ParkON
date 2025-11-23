@@ -3,3 +3,5 @@ IMG_6651.JPG
 IMG_6652.JPG
 node_modules/
 .DS_Store 
+database.sqlite
+createAdmin.js

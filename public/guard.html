@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ParkON – Guard</title>
+</head>
+
+<body>
+    <h1>Guard felület</h1>
+    <p>Üdv, parkolóőr! (később ide jönnek a funkciók)</p>
+
+    <button id="logout-btn">Kijelentkezés</button>
+
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            const res = await fetch('/api/logout', {
+                method: 'POST'
+            });
+            const data = await res.json();
+            if (data.success) {
+                window.location.href = data.redirect;
+            }
+        });
+    </script>
+</body>
+
+</html>
