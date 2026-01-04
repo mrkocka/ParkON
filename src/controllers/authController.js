@@ -66,7 +66,7 @@ const authController = {
       res.json({
         success: true,
         message: "Sikeres kijelentkezés.",
-        redirect: "/login.html",
+        redirect: "/",
       });
     });
   },

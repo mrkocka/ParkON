@@ -27,21 +27,22 @@ app.use(
   })
 );
 
-// Statikus fájlok
-app.use(express.static(path.join(__dirname, "public")));
+// Static assets (css, js)
+app.use('/assets', express.static(path.join(__dirname, 'public')));
 
 // API route-ok
 app.use("/api", authRoutes);
 
 // Oldal route-ok (HTML-ek kiszolgálása)
 app.get("/", (req, res) => {
-  // később itt lehetne a publikus felület
-  res.redirect("/login.html");
-});
-
-app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
+
+//Publikus foglaltság mérő elérése 
+app.get("/public", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "public.html"));
+});
+
 
 // Admin felület – védett
 app.get("/admin", isLoggedIn, isAdmin, (req, res) => {
