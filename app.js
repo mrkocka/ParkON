@@ -4,6 +4,8 @@ const path = require("path");
 
 const app = express();
 
+const adminRoutes = require("./src/routes/adminRoutes");
+
 // DB inicializálás (csak hogy létrejöjjön a tábla)
 require("./src/models/db");
 
@@ -32,6 +34,7 @@ app.use('/assets', express.static(path.join(__dirname, 'public')));
 
 // API route-ok
 app.use("/api", authRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Oldal route-ok (HTML-ek kiszolgálása)
 app.get("/", (req, res) => {

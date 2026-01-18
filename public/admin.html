@@ -7,10 +7,30 @@
 </head>
 
 <body>
-    <h1>Admin felület</h1>
-    <p>Üdv, admin! (később ide jön a dashboard)</p>
+    <main>
+        <h1>Admin felület</h1>
+        <p>Üdv, admin! (később ide jön a dashboard)</p>
+        <section>
 
-    <button id="logout-btn">Kijelentkezés</button>
+            <h2>Új parkolóőr felvétele</h2>
+
+            <div id="guard-form">
+                <input type="text" id="name" placeholder="Név" />
+                <input type="email" id="email" placeholder="Email" />
+                <input type="password" id="password" placeholder="Jelszó" />
+
+                <button id="create-guard-btn">Őr létrehozása</button>
+
+                <p id="guard-message"></p>
+            </div>
+
+
+        </section>
+        <button id="logout-btn">Kijelentkezés</button>
+    </main>
+
+
+
 
     <script>
         document.getElementById('logout-btn').addEventListener('click', async () => {
@@ -23,6 +43,7 @@
             }
         });
     </script>
+    <script src="/assets/js/admin.js"></script>
 </body>
 
 </html>
