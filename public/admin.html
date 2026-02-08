@@ -10,22 +10,28 @@
     <main>
         <h1>Admin felület</h1>
         <p>Üdv, admin! (később ide jön a dashboard)</p>
-        <section>
 
+        <!-- Új parkolóőr felvétele funkció -->
+        <section>
             <h2>Új parkolóőr felvétele</h2>
 
             <div id="guard-form">
-                <input type="text" id="name" placeholder="Név" />
-                <input type="email" id="email" placeholder="Email" />
-                <input type="password" id="password" placeholder="Jelszó" />
+                <form action="">
+                    <input type="text" id="name" placeholder="Név" />
+                    <input type="email" id="email" placeholder="Email" />
+                    <input type="password" id="password" placeholder="Jelszó" />
 
-                <button id="create-guard-btn">Őr létrehozása</button>
+                    <button id="create-guard-btn">Őr létrehozása</button>
+
+                </form>
 
                 <p id="guard-message"></p>
             </div>
-
-
         </section>
+        <!-- Parkoló őrök listája  -->
+        <section></section>
+
+
         <button id="logout-btn">Kijelentkezés</button>
     </main>
 

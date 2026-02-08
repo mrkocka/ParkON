@@ -1,7 +1,8 @@
 const btn = document.getElementById("create-guard-btn");
 const msg = document.getElementById("guard-message");
 
-btn.addEventListener("click", async () => {
+btn.addEventListener("click", async (e) => {
+  e.preventDefault();
   msg.textContent = "";
 
   const name = document.getElementById("name").value.trim();
@@ -10,6 +11,14 @@ btn.addEventListener("click", async () => {
 
   if (!name || !email || !password) {
     msg.textContent = "Minden mező kitöltése kötelező.";
+    msg.style.color = "red";
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msg.textContent = "Érvénytelen email cím.";
+    msg.style.color = "red";
     return;
   }
 
