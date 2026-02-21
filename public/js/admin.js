@@ -40,6 +40,7 @@ btn.addEventListener("click", async (e) => {
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("password").value = "";
+      loadGuards();
     }
   } catch (err) {
     console.error(err);
@@ -47,3 +48,44 @@ btn.addEventListener("click", async (e) => {
     msg.style.color = "red";
   }
 });
+
+async function loadGuards() {
+  try {
+    const res = await fetch("/api/admin/guards");
+    const data = await res.json();
+
+    if (!data.success) return;
+
+    const tbody = document.querySelector("#guards-table tbody");
+    tbody.innerHTML = "";
+
+    data.guards.forEach((guard) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${guard.name}</td>
+        <td>${guard.email}</td>
+        <td>${guard.created_at}</td>
+        <td class="text-end">
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger js-delete-guard"
+            data-guard-id="${guard.id}"
+            data-guard-email="${guard.email}"
+            disabled
+            title="Törlés (hamarosan)"
+          >
+            Törlés
+          </button>
+        </td>
+      `;
+
+      tbody.appendChild(row);
+    });
+  } catch (err) {
+    console.error("Guard lista hiba:", err);
+  }
+}
+
+// Oldal betöltésekor automatikus lekérés
+document.addEventListener("DOMContentLoaded", loadGuards);

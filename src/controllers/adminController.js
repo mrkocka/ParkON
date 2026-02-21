@@ -40,6 +40,25 @@ const adminController = {
       );
     });
   },
+  listGuards(req, res) {
+    db.all(
+      "SELECT id, name, email, created_at FROM users WHERE role = ? ORDER BY created_at DESC",
+      ["guard"],
+      (err, rows) => {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: "Adatbázis hiba.",
+          });
+        }
+
+        return res.json({
+          success: true,
+          guards: rows,
+        });
+      }
+    );
+  },
 };
 
 module.exports = adminController;
